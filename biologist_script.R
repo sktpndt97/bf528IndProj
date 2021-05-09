@@ -1,4 +1,4 @@
-#setwd("/usr4/bf527/sktpndt/Individual_Project/project3_Biologist")
+setwd("/usr4/bf527/sktpndt/Individual_Project/project3_Biologist")
 library(dplyr)
 
 # Heatmap clustering ------------------------------------------------------
@@ -58,10 +58,14 @@ merged_df_filt <- merged_df_filt[apply(merged_df_filt[2:19], 1, cv_tf, 0.5),]
 # 8386 genes remaining
 
 # Heatmap
-heatmap(data.matrix(merged_df_filt[,2:19]))
+heatmap(data.matrix(merged_df_filt[,2:19]),
+        cexCol = 0.6,
+        cexRow = 0.1,
+        ylab = "Genes",
+        xlab = "Samples",
+        margins = c(6,3))
 
-
-# Getting DE Genes for GSEA analysis --------------------------------------
+# Getting DE Genes for enrichment analysis --------------------------------------
 
 # Read csv
 cmc <- read.csv("resCMC_AHR_deseq_results.csv")
